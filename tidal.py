@@ -94,7 +94,7 @@ for radius, num_of_units in radii_and_units:
 
 datetime_now = datetime.datetime.now().strftime("%H:%M:%S %Y-%m-%d")
 with open(f"{datetime_now}-position-data.csv", "w+") as file:
-    header = "central_x,central_y,moving_x,moving_y"
+    header = "time,central_x,central_y,moving_x,moving_y"
     for radius, num_of_units in radii_and_units:
         header_str = ",".join([f"particle_{radius}_{i}_x,particle_{radius}_{i}_y" for i in range(num_of_units)])
         header += "," + header_str
@@ -105,7 +105,7 @@ with open(f"{datetime_now}-position-data.csv", "w+") as file:
     while (t < 5000):
         t_arr.append(t)
 
-        row = ""
+        row = str(t) + ","
         
         central_body.set_gforce([moving_body])
         central_body.update_speed_position(dt)
@@ -127,7 +127,7 @@ with open(f"{datetime_now}-position-data.csv", "w+") as file:
                 # particles_x_arrs[i][j].append(particle.x)
                 # particles_y_arrs[i][j].append(particle.y)
 
-        file.write(row)
+        file.write(row + "\n")
 
         t += dt
         if count % 500 == 0:
