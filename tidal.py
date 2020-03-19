@@ -36,6 +36,7 @@ class TestParticle:
         self.x += dt * self.v_x
         self.y += dt * self.v_y
 
+
 radii_and_units = [
     (2, 12),
     (3, 18),
@@ -66,22 +67,24 @@ for (radius, num_of_units) in radii_and_units:
 
     all_particles.append(particles)
 
-
 dt = 0.01
-t = 0
-t_arr = []
-x_arr = []
-y_arr = []
-test = all_particles[1][0]
 
-while (t < 1000):
-    test.set_gforce(body)
-    test.update_speed_position(dt)
-    t_arr.append(t)
-    x_arr.append(test.x)
-    y_arr.append(test.y)
-    t += dt
+for particles_in_radius in all_particles:
+    for particle in particles_in_radius:
+        t_arr = []
+        x_arr = []
+        y_arr = []
+        t = 0
+        while (t < 100):
+            particle.set_gforce(body)
+            particle.update_speed_position(dt)
+            t_arr.append(t)
+            x_arr.append(particle.x)
+            y_arr.append(particle.y)
+            t += dt
+        plt.plot(x_arr, y_arr)
 
-plt.plot(x_arr, y_arr)
+
 plt.show()
+
 
