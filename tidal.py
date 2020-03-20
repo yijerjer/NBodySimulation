@@ -35,7 +35,7 @@ class Body:
         self.y += dt * self.v_y
 
 
-for val in [10, 20, 30, 40]:
+for val in [50]:
     central_body = Body([0, 0], [0, 0], mass=1)
 
     radii_and_units = [
@@ -79,7 +79,7 @@ for val in [10, 20, 30, 40]:
     moving_v_x = moving_v_y / dy_dx
     moving_body = Body([moving_x, moving_y], [moving_v_x, moving_v_y], mass=1)
 
-    dt = 0.01
+    dt = 0.1
     t = 0
 
     # datetime_now = datetime.datetime.now().strftime("%H:%M:%S %Y-%m-%d")
