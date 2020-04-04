@@ -3,30 +3,26 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: report.aux
 The style file: unsrt.bst
 Database file #1: report.bib
-Warning--string name "[623-666]" is undefined
---line 7 of file report.bib
-Warning--string name "[290-302]" is undefined
---line 32 of file report.bib
 You've used 6 entries,
             1791 wiz_defined-function locations,
-            478 strings with 4222 characters,
-and the built_in function-call counts, 852 in all, are:
-= -- 71
+            480 strings with 4236 characters,
+and the built_in function-call counts, 1000 in all, are:
+= -- 87
 > -- 32
 < -- 0
 + -- 14
 - -- 8
-* -- 25
-:= -- 150
+* -- 43
+:= -- 166
 add.period$ -- 19
 call.type$ -- 6
 change.case$ -- 6
 chr.to.int$ -- 0
 cite$ -- 6
-duplicate$ -- 39
-empty$ -- 98
+duplicate$ -- 41
+empty$ -- 116
 format.name$ -- 8
-if$ -- 190
+if$ -- 226
 int.to.chr$ -- 0
 int.to.str$ -- 6
 missing$ -- 3
@@ -36,16 +32,15 @@ pop$ -- 23
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 22
+skip$ -- 20
 stack$ -- 0
-substring$ -- 0
+substring$ -- 42
 swap$ -- 6
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 6
+while$ -- 8
 width$ -- 7
 write$ -- 66
-(There were 2 warnings)
