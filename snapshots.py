@@ -1,60 +1,58 @@
+import os
+import sys
+import time
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import time
-
-radii_units_colors = [
-    (2, 120, 'g'),
-    (3, 180, 'c'),
-    (4, 240, 'm'), 
-    (5, 300, 'y'),
-    (6, 360, 'k')
-]
+from core import radii_units_colors
+from core import get_positions_from_row
 
 
-print("Reading file...")
-positions = pd.read_csv(f"ac_positions.csv", delimiter=",")
-print("File read.")
+try:
+    if len(sys.argv) < 2:
+        raise OSError("Provide an existing data file name from the data/ folder")
 
-# snapshot_rows = np.linspace(0, len(positions)- 1, 4, dtype=int)
-snapshot_rows = [2550, 4050, 4250, 4550, 5050, 5550]
-snapshot_positions = positions.iloc[snapshot_rows,:]
+    filename = sys.argv[1]
+    if not os.path.isfile(f"data/{filename}"):
+        raise OSError(f"The file {filename} does not exist. Please provide an existing data file in the data/ folder")
 
-fig, axs = plt.subplots(3, 2, figsize=(6, 7.5))
-axs_count = 0
+    print("Reading file...")
+    positions = pd.read_csv(f"data/{filename}", delimiter=",")
+    print("File read.")
 
-for idx, row in snapshot_positions.iterrows():
-    time = row[0]
-    central_x = row[1]
-    central_y = row[2]
-    moving_x = row[3]
-    moving_y = row[4]
-    test_particles_positions = row[5:]
-    all_test_particles_x = [coord for idx, coord in enumerate(test_particles_positions) if idx % 2 == 0]
-    all_test_particles_y = [coord for idx, coord in enumerate(test_particles_positions) if idx % 2 == 1]
+    positions["pos_difference"] = np.sqrt(np.square(positions.central_x - positions.moving_x) + np.square(positions.central_y - positions.moving_y))
+    closest_approach = positions[positions.pos_difference == positions.pos_difference.min()].iloc[0]
+    closest_approach_idx = closest_approach.name
+    snapshot_rows = np.array([-1000, 0, 250, 500, 1000, 1250]) + closest_approach_idx
+    snapshot_positions = positions.iloc[snapshot_rows,:]
+    snapshot_positions["time"] = snapshot_positions["time"] - closest_approach.time
 
-    test_particles_xs = []
-    test_particles_ys = []
-    index = 0
-    for (radius, num, color) in radii_units_colors:
-        test_particles_xs.append(all_test_particles_x[index:index + num])
-        test_particles_ys.append(all_test_particles_y[index:index + num])
-        index += num
+    fig, axs = plt.subplots(3, 2, figsize=(6, 7.5))
+    axs_count = 0
 
-    axs[axs_count % 3][1 if axs_count > 2 else 0].scatter(central_x, central_y, color='b')
-    axs[axs_count % 3][1 if axs_count > 2 else 0].scatter(moving_x, moving_y, color='r')
-    for idx, (radius, num, color) in enumerate(radii_units_colors):
-        axs[axs_count % 3][1 if axs_count > 2 else 0].scatter(test_particles_xs[idx], test_particles_ys[idx], s=1, color=color, label=rf"$r = {radius}$")
-        
-    axs[axs_count % 3][1 if axs_count > 2 else 0].set_xlim([-60, 60])
-    axs[axs_count % 3][1 if axs_count > 2 else 0].set_ylim([-80, 40])
-    axs[axs_count % 3][1 if axs_count > 2 else 0].tick_params(axis='x', which='both', bottom=False, labelbottom=False)
-    axs[axs_count % 3][1 if axs_count > 2 else 0].tick_params(axis='y', which='both', left=False, labelleft=False)
-    axs[axs_count % 3][1 if axs_count > 2 else 0].set_title(rf"$t = {int(time - 405)}$")
-    if axs_count == 0:
-        axs[axs_count % 3][1 if axs_count > 3 else 0].legend()
+    for idx, row in snapshot_positions.iterrows():
+        (time, central_x, central_y, moving_x, moving_y, particles_xs, particles_ys) = get_positions_from_row(row)
 
-    axs_count += 1
+        axs[axs_count % 3][1 if axs_count > 2 else 0].scatter(central_x, central_y, color='b')
+        axs[axs_count % 3][1 if axs_count > 2 else 0].scatter(moving_x, moving_y, color='r')
+        for idx, (radius, num, color) in enumerate(radii_units_colors):
+            axs[axs_count % 3][1 if axs_count > 2 else 0].scatter(particles_xs[idx], particles_ys[idx], s=1, color=color, label=rf"$r = {radius}$")
+            
+        axs[axs_count % 3][1 if axs_count > 2 else 0].set_xlim([-60, 60])
+        if filename.find("clockwise") >= 0:
+            axs[axs_count % 3][1 if axs_count > 2 else 0].set_ylim([-40, 80])
+        else:
+            axs[axs_count % 3][1 if axs_count > 2 else 0].set_ylim([-80, 40])
+        axs[axs_count % 3][1 if axs_count > 2 else 0].tick_params(axis='x', which='both', bottom=False, labelbottom=False)
+        axs[axs_count % 3][1 if axs_count > 2 else 0].tick_params(axis='y', which='both', left=False, labelleft=False)
+        axs[axs_count % 3][1 if axs_count > 2 else 0].set_title(rf"$t = {int(time)}$")
+        if axs_count == 0:
+            axs[axs_count % 3][1 if axs_count > 3 else 0].legend()
 
-fig.tight_layout()
-fig.savefig("report/images/anticlockwise_positions.png", dpi=400)
+        axs_count += 1
+
+    fig.tight_layout()
+    fig.savefig(f"report/images/plot_{filename}.png", dpi=400)
+
+except OSError as e:
+    print(repr(e))
