@@ -1,20 +1,20 @@
 # Fdb version 3
-["bibtex report"] 1586234077 "report.aux" "report.bbl" "report" 1586234143
+["bibtex report"] 1586234077 "report.aux" "report.bbl" "report" 1586237401
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/unsrt.bst" 1480098433 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "report.aux" 1586234141 3904 c99ad4891a4f18666c43e38c531e7d78 ""
+  "report.aux" 1586237396 3904 c99ad4891a4f18666c43e38c531e7d78 ""
   "report.bcf" 0 -1 0 ""
   "report.bib" 1585993988 1313 2866a1fddc339a7b1205d7059bdb1800 ""
   (generated)
-  "report.bbl"
   "report.blg"
-["pdflatex"] 1586234133 "/mnt/c/Users/lohyi/Documents/project/report/report.tex" "/mnt/c/Users/lohyi/Documents/project/report/report.pdf" "report" 1586234143
+  "report.bbl"
+["pdflatex"] 1586237387 "/mnt/c/Users/lohyi/Documents/project/report/report.tex" "/mnt/c/Users/lohyi/Documents/project/report/report.pdf" "report" 1586237401
   "../animation.py" 1586080815 1359 6cd164cdeb60d4fee7c4c0f33cadaafc ""
   "../core.py" 1586157083 3321 de65cc27d923936866956a2cf01fba3a ""
   "../get_quantitative.py" 1586144091 3272 c012da195d0587d4cd137127141519b2 ""
   "../simulation.py" 1586144921 3648 a2db58fdb3e406864c69a1f8e42ae30b ""
   "/etc/texmf/web2c/texmf.cnf" 1581338473 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/mnt/c/Users/lohyi/Documents/project/report/report.aux" 1586234141 3904 c99ad4891a4f18666c43e38c531e7d78 ""
-  "/mnt/c/Users/lohyi/Documents/project/report/report.tex" 1586234127 28361 978be0cd026e3a9de92dbf2d88465449 ""
+  "/mnt/c/Users/lohyi/Documents/project/report/report.aux" 1586237396 3904 c99ad4891a4f18666c43e38c531e7d78 ""
+  "/mnt/c/Users/lohyi/Documents/project/report/report.tex" 1586237397 28595 b29d929a3b44ba780806f19da3bce2cc ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx0900.tfm" 1480098696 3584 1a7de6c99457381c64abc1a7c545505f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1480098696 3584 2d666ecf6d466d8b007246bc2f94d9da ""
@@ -182,12 +182,12 @@
   "images/plot_fraction_mass.png" 1586167831 169489 b1bbbca7aad2461a305c128c74e9146f ""
   "images/plot_fraction_rmin.png" 1586167823 173669 2e3cf9ff9b2b852fc16e3d4b786cf806 ""
   "images/tadpole_tail.png" 1585974263 408308 027de4513947088fe80c00beeb32ca36 ""
-  "report.aux" 1586234141 3904 c99ad4891a4f18666c43e38c531e7d78 ""
+  "report.aux" 1586237396 3904 c99ad4891a4f18666c43e38c531e7d78 ""
   "report.bbl" 1586234078 1072 935e8202f72bcb4cc0ceade848324bad "bibtex report"
-  "report.tex" 1586234127 28361 978be0cd026e3a9de92dbf2d88465449 ""
+  "report.tex" 1586237397 28595 b29d929a3b44ba780806f19da3bce2cc ""
   (generated)
-  "/mnt/c/Users/lohyi/Documents/project/report/report.pdf"
-  "report.aux"
-  "/mnt/c/Users/lohyi/Documents/project/report/report.log"
   "report.log"
+  "/mnt/c/Users/lohyi/Documents/project/report/report.log"
+  "report.aux"
+  "/mnt/c/Users/lohyi/Documents/project/report/report.pdf"
   "report.pdf"
