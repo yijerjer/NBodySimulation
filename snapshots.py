@@ -7,6 +7,9 @@ import matplotlib.pyplot as plt
 from core import radii_units_colors
 from core import get_positions_from_row
 
+plt.rc('text', usetex=True)
+plt.rc('font', family='serif')
+
 
 try:
     if len(sys.argv) < 2:

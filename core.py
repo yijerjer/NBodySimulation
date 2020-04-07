@@ -8,7 +8,6 @@ radii_units_colors = [
     (6, 360, 'k')
 ]
 
-# for a single simulation run, use mass = 20, r_min = 20
 G = 1
 clockwise = False
 mass_arr = [0.2, 0.4, 0.6, 0.8, 1.0, 1.2, 1.4, 1.8, 2.2, 2.6, 3.0]

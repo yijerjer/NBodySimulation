@@ -36,7 +36,7 @@ try:
         axs1.set_xlabel("Distance of closest approach / units")
         axs2.set_xlabel("Distance of closest approach / units")
 
-    axs1.set_ylabel("Average distance from central galaxy / units")
+    axs1.set_ylabel("Median distance from central galaxy / units")
     axs2.set_ylabel("Fraction of disturbed stars / units")
     axs1.legend()
     axs2.legend()
