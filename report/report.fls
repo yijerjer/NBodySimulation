@@ -128,6 +128,8 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictio
 INPUT /usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 INPUT /usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
+INPUT /usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx-binary.cfg
+INPUT /usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx-binary.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -237,6 +239,8 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecit0900.tfm
 INPUT /mnt/c/Users/lohyi/Documents/project/report/images/anticlockwise_positions.png
 INPUT /mnt/c/Users/lohyi/Documents/project/report/images/anticlockwise_positions.png
 INPUT /mnt/c/Users/lohyi/Documents/project/report/images/anticlockwise_positions.png
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm0700.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm0500.tfm
 INPUT /mnt/c/Users/lohyi/Documents/project/report/images/plot_fraction_mass.png
 INPUT /mnt/c/Users/lohyi/Documents/project/report/images/plot_fraction_mass.png
 INPUT /mnt/c/Users/lohyi/Documents/project/report/images/plot_fraction_mass.png
