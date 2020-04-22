@@ -22,7 +22,6 @@ class AnimateSimulation:
         self.animation = animation.FuncAnimation(self.fig, self.update_scatter, blit=True, interval=5, frames=500)
         
     def setup_scatter(self):
-        # (time, central_x, central_y, moving_x, moving_y, particles_xs, particles_ys) = get_positions_from_row(self.first_row)
         X, Y, C, S = self.get_xycs(self.first_row)
         self.scat = self.axs.scatter(X, Y, c=C, s=S)
         return self.scat,
@@ -30,7 +29,6 @@ class AnimateSimulation:
     def update_scatter(self, i):
         row = self.animation_positions.iloc[i]
         X, Y, _, _ = self.get_xycs(row)
-        # print(np.transpose([X, Y]))
         self.scat.set_offsets(np.transpose([X, Y]))
         return self.scat,
 

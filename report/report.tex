@@ -66,7 +66,7 @@
 \renewcommand{\maketitlehookd}{%
 
 \begin{abstract}
-    A tidal tail is a long, thin region of stars and interstellar dust extending from a galaxy, and is a result of tidal gravitational forces between interacting galaxies. A simple N-body simulation of two interacting galaxies was performed where specifically, a star-less perturbing galaxy with initial conditions of a parabolic orbit was introduced to a central galaxy with circularly orbiting stars. The simulation showed that a tidal tail was created from the outer orbiting stars of the central galaxy through a prograde encounter between the perturbing galaxy and the central galaxy. Quantitative results, including the fraction of stars disturbed from their initial orbits and the median distance of the stars from the central galaxy, were obtained for different characteristics and initial conditions of the perturbing galaxy. Varying the distance of closest approach of the two galaxies showed a smaller distance of closest approach leads to a larger proportion of disturbed stars and a larger median distance between the stars and the central galaxy. Changing the mass of the perturbing galaxy demonstrated that the heavier the perturbing galaxy, more stars were stripped away and ended up further away from the central galaxy. [Word count: 2946]
+    A tidal tail is a long, thin region of stars and interstellar dust extending from a galaxy, and is a result of tidal gravitational forces between interacting galaxies. A simple N-body simulation of two interacting galaxies was performed where specifically, a star-less perturbing galaxy with initial conditions of a parabolic orbit was introduced to a central galaxy with circularly orbiting stars. The simulation showed that a tidal tail was created from the outer orbiting stars of the central galaxy through a prograde encounter between the perturbing galaxy and the central galaxy. Quantitative results, including the fraction of stars disturbed from their initial orbits and the median distance of the stars from the central galaxy, were obtained for different characteristics and initial conditions of the perturbing galaxy. Varying the distance of closest approach of the two galaxies showed a smaller distance of closest approach leads to a larger proportion of disturbed stars and a larger median distance between the stars and the central galaxy. Changing the mass of the perturbing galaxy demonstrated that the heavier the perturbing galaxy, more stars were stripped away and ended up further away from the central galaxy. [Word count: 2969]
 
     
 \end{abstract}
@@ -220,7 +220,7 @@
 
     \subsection{Prograde and Retrograde Encounters}
 
-        Figures \ref{figure:retrograde} and \ref{figure:prograde} show the retrograde and prograde encounters of the two galaxies respectively. Here, the distance of closest approach \texttt{r\_min} was set to 20 units and the mass of the perturbing galaxy \texttt{mass} was set to 1 unit. The \texttt{t = 0} snapshot was set to the frame where the distance between the two galaxies was at a minimum. Multiple runs of the same simulation were performed, and very similar results were obtained from them. The figures show a clear agreement between the results of this simulation and those performed by Toomre and Toomre, where the prograde encounter was shown to have a significantly more disruptive effect than the retrograde encounter. 
+        Figures \ref{figure:retrograde} and \ref{figure:prograde}, as well as the \texttt{animation\_prograde.mp4} and \texttt{animation\_retrograde.mp4} files, show the retrograde and prograde encounters of the two galaxies respectively. Here, the distance of closest approach \texttt{r\_min} was set to 20 units and the mass of the perturbing galaxy \texttt{mass} was set to 1 unit. The \texttt{t = 0} snapshot was set to the frame where the distance between the two galaxies was at a minimum. Multiple runs of the same simulation were performed, and very similar results were obtained from them. The figures show a clear agreement between the results of this simulation and those performed by Toomre and Toomre, where the prograde encounter was shown to have a significantly more disruptive effect than the retrograde encounter. 
         
         In the retrograde encounter, there was a noticeable destabilisation of the outermost circular orbit in the $t = 25, 50, 100, 125$ snapshots. However, the outermost stars remained in orbit, albeit not circular, around the central galaxy. The stars in the other orbits remain relatively circular. This mild effect can possibly be attributed to weak tidal effects from the perturbing galaxy, where the test particles nearest to the perturbing galaxy moved in a relatively antiparallel direction to the velocity of the perturbing galaxy.
         
@@ -254,7 +254,7 @@
     \subsection{Sources of Errors}
         \label{section:error}
 
-        From the results above, in particular for the median distance between the test particles and the central galaxy, there appears to be a large source of error. Looking into the setup of the simulation, this large error can be traced to the fact that the galaxies are treated as point masses. When a test particle gets very close ($r \to 0$) to the galaxies represented as point masses, the acceleration of the test particle, given as $a_{x} = GM(x - X) / r^3$, will become extremely large. This results in the test particle being 'shot' extremely far outwards, and this effect can actually be observed in the absurdly large error and distance in the bottom plot of Figure \ref{figure:varying_distance}. In order to mitigate this effect, the massive galaxies should be modelled to either have a finite radius, or tweaking the potential such that the galaxies have a repulsive force at small radii. This point mass effect was also the primary reason that the median, rather than the average distance, was used as a quantitative metric. 
+        From the results above, in particular for the median distance between the test particles and the central galaxy, there appears to be a large source of error. Looking into the setup of the simulation, this large error can be traced to the fact that the galaxies are treated as point masses. When a test particle gets very close ($r \to 0$) to the galaxies represented as point masses, the acceleration of the test particle, given as $a_{x} = GM(x - X) / r^3$, will become extremely large. This results in the test particle being 'shot' extremely far outwards, and this effect can actually be observed in the absurdly large error and distance in the bottom plot of Figure \ref{figure:varying_distance}, as well as the unnaturally fast moving test particles the \texttt{mp4} files of the simulation. In order to mitigate this effect, the massive galaxies should be modelled to either have a finite radius, or tweaking the potential such that the galaxies have a repulsive force at small radii. This point mass effect was also the primary reason that the median, rather than the average distance, was used as a quantitative metric. 
 
         Another potential source of error in this simulation is the use of a finite timestep. It is impossible to achieve an infinitesimally small timestep due to the restrictions of a classical computer, however a sufficiently small finite timestep would create a reliable and accurate simulation. The choice of picking a timestep of \texttt{dt = 0.1} was a balance between the accuracy and the efficiency of the simulation. A larger timestep, which can reduce the runtime of the program, would lead to inaccuracies and can potentailly lead to a divergence of the positions and velocities of the simulated particles. A smaller timestep would mean a slower program, where given the timestep method is of order $\mathcal{O}(N^2)$, a decrease of the timestep by a factor of 10 would result in a runtime of 100 times longer, which is not ideal!
 
@@ -281,15 +281,12 @@
 
 \noindent {\large \texttt{simulation.py}}
 \lstinputlisting{../simulation.py}
-\newpage
 
-\noindent {\large \texttt{animation.py}}
-\lstinputlisting{../animation.py}
-\newpage
+\vspace{50px}
 
-\noindent {\large \texttt{get\_quantitative.py}}
-\lstinputlisting{../get_quantitative.py}
-\newpage
+\noindent {\large \texttt{animation.py}, \texttt{get\_quantitative.py}, \texttt{plot\_quantitative.py} (code to create Figures \ref{figure:varying_fraction} and \ref{figure:varying_distance}) and \texttt{snapshots.py} (code to create Figures \ref{figure:retrograde} and \ref{figure:prograde}) are also provided together with the submission.}
+
+\noindent {\large \texttt{animation\_prograde.mp4} and \texttt{animation\_retrograde.mp4}, the animation of the prograde and retrograde simulations, are also provided together with the submission.}
 
 
 \end{document}
